@@ -149,4 +149,10 @@
       enabled = #{enabled,jdbcType=BIT}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="getAllMenu" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from menu
+  </select>
 </mapper>

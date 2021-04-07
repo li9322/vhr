@@ -1,5 +1,8 @@
 package com.li.vhr.model;
 
+import java.util.Collection;
+import java.util.List;
+
 public class Menu {
     private Integer id;
 
@@ -20,6 +23,8 @@ public class Menu {
     private Integer parentid;
 
     private Boolean enabled;
+
+    private List<Role> roles;
 
     public Integer getId() {
         return id;
@@ -99,5 +104,13 @@ public class Menu {
 
     public void setEnabled(Boolean enabled) {
         this.enabled = enabled;
+    }
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
     }
 }
