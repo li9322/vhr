@@ -29,7 +29,7 @@ public class Hr implements UserDetails {
 
     private String remark;
 
-    private List<Role> roles;
+//    private List<Role> roles;
 
     public Integer getId() {
         return id;
@@ -80,13 +80,13 @@ public class Hr implements UserDetails {
         return username;
     }
 
-    public List<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(List<Role> roles) {
-        this.roles = roles;
-    }
+//    public List<Role> getRoles() {
+//        return roles;
+//    }
+//
+//    public void setRoles(List<Role> roles) {
+//        this.roles = roles;
+//    }
 
     @Override
     public boolean isAccountNonExpired() {
@@ -114,10 +114,11 @@ public class Hr implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        List<GrantedAuthority> authorities=new ArrayList<>();
-        for (Role role:roles)
-            authorities.add(new SimpleGrantedAuthority(role.getName()));
-        return authorities;
+//        List<GrantedAuthority> authorities=new ArrayList<>();
+//        for (Role role:roles)
+//            authorities.add(new SimpleGrantedAuthority(role.getName()));
+//        return authorities;
+        return null;
     }
 
     public String getPassword() {
