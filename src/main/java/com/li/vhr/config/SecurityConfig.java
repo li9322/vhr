@@ -13,6 +13,7 @@ import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.LockedException;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
@@ -37,6 +38,12 @@ import java.io.PrintWriter;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     HrService hrService;
+    @Autowired
+    UrlFilterInvocationSecurityMetadataSource urlFilterInvocationSecurityMetadataSource;
+    @Autowired
+    UrlAccessDecisionManager urlAccessDecisionManager;
+    @Autowired
+    AuthenticationAccessDeniedHandler authenticationAccessDeniedHandler;
 
     @Bean
     PasswordEncoder passwordEncoder() {
@@ -45,7 +52,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(hrService);
+        auth.userDetailsService(hrService).passwordEncoder(new BCryptPasswordEncoder());
+    }
+
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        web.ignoring().antMatchers("/index.html","/static/**");
     }
 
     @Override
