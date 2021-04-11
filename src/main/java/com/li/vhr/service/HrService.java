@@ -22,7 +22,6 @@ public class HrService implements UserDetailsService {
         Hr hr=hrMapper.loadUserByUsername(s);
         if (hr==null)
             throw new UsernameNotFoundException("用户名不存在");
-        hr.setPassword(null);
         return hr;
     }
 
