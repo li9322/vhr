@@ -68,7 +68,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .usernameParameter("username")
                 .passwordParameter("password")
-                .loginProcessingUrl("/login")
+                .loginProcessingUrl("/doLogin")
+                .loginPage("/login")
                 .successHandler(new AuthenticationSuccessHandler() {
                     @Override
                     public void onAuthenticationSuccess(HttpServletRequest req,
