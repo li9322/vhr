@@ -118,7 +118,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                                                 Authentication auth) throws IOException, ServletException {
                         resp.setContentType("application/json;charset=utf-8");
                         PrintWriter out=resp.getWriter();
-                        out.write(new ObjectMapper().writeValueAsString("注销成功！"));
+                        RespBean ok=RespBean.ok("注销成功");
+                        out.write(new ObjectMapper().writeValueAsString(ok));
                         out.flush();
                         out.close();
                     }
